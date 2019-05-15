@@ -96,7 +96,11 @@ class LayoutComponent extends Component {
     if (!isNaN(width)) {
       width += 'px';
     }
-    onChange(imgSrc, height, width, alt);
+    if (typeof imgSrc === "object") {
+      onChange(imgSrc.props.src, height, width, alt);
+    }else{
+      onChange(imgSrc, height, width, alt);
+    }
   };
 
   showImageURLOption: Function = (): void => {
